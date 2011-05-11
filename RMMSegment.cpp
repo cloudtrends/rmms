@@ -304,13 +304,20 @@ class CRMMSegment
 
 int main()
 {
+    string src;
 	vector<string> dst;
 	CRMMSegment segment;
-	segment.LoadDict("D:/workspace/RMMSegment/src/dict.txt");
-	segment.Segment(string("中国杭州的一只猪，哈哈，good123,你好").c_str(), dst);
-	for(vector<string>:: iterator it = dst.begin(); it != dst.end(); it++)
-		cout << *it << "/";
-	cout << endl;
-	cout << "!!!end!!!" << endl; // prints !!!Hello World!!!
+	segment.LoadDict("dict.txt");
+	cout << "==================================================" << endl;
+	cout << "Input A String:" ;
+	while(getline(cin, src)){
+		segment.Segment(src.c_str(), dst);
+		for(vector<string>:: iterator it = dst.begin(); it != dst.end(); it++)
+			cout << *it << "/";
+			cout << endl;
+		dst.clear();
+		cout << "Input A String:" ;
+	}
+	cout << endl << "==================================================" << endl;
 	return 0;
 }
